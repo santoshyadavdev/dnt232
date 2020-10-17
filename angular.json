@@ -8,7 +8,7 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "dnt",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dnt232"
+    }
+  },
+  "defaultProject": "dnt232",
+  "cli": {
+    "analytics": "fd12bb7a-a5a0-4ee6-8ebe-c9a88ee0c89d"
+  }
 }
