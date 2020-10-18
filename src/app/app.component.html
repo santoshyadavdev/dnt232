@@ -2,4 +2,15 @@
   Hello World!
 </h1>
 
-<dnt-employee></dnt-employee>
+
+
+<ng-container [ngSwitch]="role">
+  <!-- admin -->
+  <dnt-employee *ngSwitchCase="'Admin'"></dnt-employee>
+  <div *ngSwitchCase="'User'">
+    Welcome to HR portal!
+  </div>
+  <div *ngSwitchDefault>
+    You dont have permisssion, please contant admin!
+  </div>
+</ng-container>
