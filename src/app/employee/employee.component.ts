@@ -30,7 +30,7 @@ export class EmployeeComponent implements OnInit {
 
   isWeb = true;
 
-  empList: Employee[] = [
+  data: Employee[] = [
     {
       id: 1,
       name: 'Dinesh',

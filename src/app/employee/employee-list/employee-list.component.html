@@ -1,0 +1,36 @@
+<table *ngIf="isWeb; else empMobileTable">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Even</th>
+      <th>Odd</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>DOB</th>
+      <th>Age</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [ngClass]="e ? 'even' : 'odd' "
+      *ngFor="let emp of empList;let i=index;let e=even; let o=odd; trackBy: trackByFn">
+      <td>{{i + 1}}</td>
+      <td>{{e}}</td>
+      <td>{{o}}</td>
+      <td>{{emp.id}}</td>
+      <td [innerText]="emp.name"></td>
+      <td>{{emp.email}}</td>
+      <td>{{emp.dob}}</td>
+      <td>{{emp.age}}</td>
+      <td>{{emp.salary}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #empMobileTable>
+  <div *ngFor="let emp of empList">
+    <span>{{emp.id}}</span> | <span>{{emp.name}}</span>
+    | <span>{{emp.email}}</span>
+  </div>
+</ng-template>
