@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Employee } from './employee';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'dnt-employee',
@@ -10,6 +11,8 @@ import { Employee } from './employee';
   // styles: ['h1 { color: red }']
 })
 export class EmployeeComponent implements OnInit {
+
+  @ViewChild(HeaderComponent, { static: true }) header: HeaderComponent;
 
   employeeName = 'Krishna';
 
@@ -26,11 +29,11 @@ export class EmployeeComponent implements OnInit {
     dob: new Date('10-Jan-2000'),
     email: 'test@gmail.com',
     salary: 450000
-  }
+  };
 
   empList: Employee[];
 
-  isWeb = true;
+  isWeb: boolean;
 
   data: Employee[] = [
     {
@@ -60,9 +63,12 @@ export class EmployeeComponent implements OnInit {
   ];
 
   selectedEmployee: Employee;
-  constructor() { }
+  constructor() {
+    this.isWeb = true;
+  }
 
   ngOnInit(): void {
+    this.header.title = 'This is employee Component';
   }
 
   toggle() {
