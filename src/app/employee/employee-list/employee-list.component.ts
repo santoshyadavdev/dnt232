@@ -1,19 +1,25 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Employee } from '../employee';
 
 @Component({
   selector: 'dnt-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css'],
-  // encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None,
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
 
   @Input() isWeb: boolean = false;
 
   @Output() selectedEmployee = new EventEmitter<Employee>();
 
   @Input() empList: Employee[];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
   constructor() { }
 
   ngOnInit(): void {

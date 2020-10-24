@@ -80,6 +80,21 @@ export class EmployeeComponent implements OnInit, DoCheck {
     console.log('Do check is called');
   }
 
+  addEmployee() {
+    const emp  = {
+      id: 4,
+      name: 'Anil',
+      age: 26,
+      dob: new Date('10-Feb-2000'),
+      email: 'test3@gmail.com',
+      salary: 450000
+    };
+
+    this.data = [...this.data, emp ];
+    this.isWeb = false;
+
+  }
+
   toggle() {
     this.hide = !this.hide;
   }
