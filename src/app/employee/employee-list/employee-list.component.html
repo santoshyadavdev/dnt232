@@ -1,4 +1,8 @@
-<table *ngIf="isWeb; else empMobileTable">
+<h1>
+  Employee List
+</h1>
+
+<table class="table" *ngIf="isWeb; else empMobileTable">
   <thead>
     <tr>
       <th>Index</th>
@@ -10,11 +14,12 @@
       <th>DOB</th>
       <th>Age</th>
       <th>Salary</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
     <tr [ngClass]="e ? 'even' : 'odd' "
-      *ngFor="let emp of empList;let i=index;let e=even; let o=odd; trackBy: trackByFn">
+      *ngFor="let emp of empList;let i=index;let e=even; let o=odd">
       <td>{{i + 1}}</td>
       <td>{{e}}</td>
       <td>{{o}}</td>
@@ -24,6 +29,9 @@
       <td>{{emp.dob}}</td>
       <td>{{emp.age}}</td>
       <td>{{emp.salary}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="sendToParent(emp)">Select</button>
+      </td>
     </tr>
   </tbody>
 </table>

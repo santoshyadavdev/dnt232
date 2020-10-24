@@ -28,7 +28,7 @@ export class EmployeeComponent implements OnInit {
     salary: 450000
   }
 
-  empList : Employee[] ;
+  empList: Employee[];
 
   isWeb = true;
 
@@ -58,6 +58,8 @@ export class EmployeeComponent implements OnInit {
       salary: 450000
     }
   ];
+
+  selectedEmployee: Employee;
   constructor() { }
 
   ngOnInit(): void {
@@ -76,7 +78,11 @@ export class EmployeeComponent implements OnInit {
     return employee.id;
   }
 
-  getData(){
+  getSelectedEmployee(emp: Employee) {
+    this.employee = emp;
+  }
+
+  getData() {
     this.empList = [
       {
         id: 1,

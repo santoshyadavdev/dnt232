@@ -16,7 +16,16 @@
 <button (click)="removeTable()">Hide table</button>
 <!-- {{empList | json}} -->
 
-<dnt-employee-list [empList]="data" [isWeb]="isWeb"></dnt-employee-list>
+<br>
+<hr>
+{{employee | json}}
+
+
+<dnt-employee-list
+[empList]="data"
+[isWeb]="isWeb"
+(selectedEmployee)="getSelectedEmployee($event)"
+></dnt-employee-list>
 
 <button (click)="getData()">Get Data</button>
 <button (click)="getNewData()">Get Data</button>
