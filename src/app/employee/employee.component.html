@@ -17,3 +17,12 @@
 <!-- {{empList | json}} -->
 
 <dnt-employee-list [empList]="data" [isWeb]="isWeb"></dnt-employee-list>
+
+<button (click)="getData()">Get Data</button>
+<button (click)="getNewData()">Get Data</button>
+
+<ul>
+  <li *ngFor="let emp of empList; trackBy: trackByFn">
+    {{emp.name}} - {{emp.email}}
+  </li>
+</ul>
