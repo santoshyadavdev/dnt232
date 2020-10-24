@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Employee } from './employee';
 import { HeaderComponent } from '../header/header.component';
 
@@ -10,9 +10,11 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./employee.component.css'],
   // styles: ['h1 { color: red }']
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent implements OnInit, DoCheck {
 
   @ViewChild(HeaderComponent, { static: true }) header: HeaderComponent;
+
+  @ViewChild('errorDiv', { static: true }) errorDiv: ElementRef;
 
   employeeName = 'Krishna';
 
@@ -69,6 +71,13 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.header.title = 'This is employee Component';
+
+    console.log(this.errorDiv);
+    this.errorDiv.nativeElement.innerHTML = '<h1>This is error div</h1>';
+  }
+
+  ngDoCheck(): void {
+    console.log('Do check is called');
   }
 
   toggle() {
