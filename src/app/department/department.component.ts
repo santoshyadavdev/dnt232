@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional, SkipSelf } from '@angular/core';
 import { EmployeeService } from '../employee/services/employee.service';
+import { LoggerService } from '../logger.service';
 
 @Component({
   selector: 'dnt-department',
@@ -8,9 +9,13 @@ import { EmployeeService } from '../employee/services/employee.service';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor(private empService: EmployeeService) { }
+  constructor(@SkipSelf() private empService: EmployeeService,
+    @Optional() private loggerService: LoggerService) { }
 
   ngOnInit(): void {
+    if (this.loggerService) {
+      this.loggerService.log();
+    }
   }
 
   addEmp() {

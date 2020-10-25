@@ -1,6 +1,6 @@
 import {
   AfterViewInit, Component, DoCheck,
-  ElementRef, OnInit, QueryList, ViewChild, ViewChildren
+  ElementRef, OnInit, QueryList, Self, ViewChild, ViewChildren
 } from '@angular/core';
 import { Employee } from './employee';
 import { HeaderComponent } from '../header/header.component';
@@ -12,6 +12,7 @@ import { EmployeeService } from './services/employee.service';
   // template: `<h1>This is employee
   //  Component</h1>`,
   styleUrls: ['./employee.component.css'],
+  providers: [EmployeeService]
   // styles: ['h1 { color: red }']
 })
 export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
@@ -74,7 +75,7 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
 
   // empService = new EmployeeService();
 
-  constructor(private empService: EmployeeService) {
+  constructor(@Self() private empService: EmployeeService) {
     this.isWeb = true;
   }
 
