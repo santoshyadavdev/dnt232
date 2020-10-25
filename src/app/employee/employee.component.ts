@@ -1,4 +1,7 @@
-import { Component, DoCheck, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, Component, DoCheck,
+  ElementRef, OnInit, QueryList, ViewChild, ViewChildren
+} from '@angular/core';
 import { Employee } from './employee';
 import { HeaderComponent } from '../header/header.component';
 
@@ -10,9 +13,11 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./employee.component.css'],
   // styles: ['h1 { color: red }']
 })
-export class EmployeeComponent implements OnInit, DoCheck {
+export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
 
-  @ViewChild(HeaderComponent, { static: true }) header: HeaderComponent;
+  @ViewChild(HeaderComponent) header: HeaderComponent;
+
+  @ViewChildren(HeaderComponent) headerList : QueryList<HeaderComponent>;
 
   @ViewChild('errorDiv', { static: true }) errorDiv: ElementRef;
 
@@ -70,8 +75,6 @@ export class EmployeeComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.header.title = 'This is employee Component';
-
     console.log(this.errorDiv);
     this.errorDiv.nativeElement.innerHTML = '<h1>This is error div</h1>';
   }
@@ -80,8 +83,14 @@ export class EmployeeComponent implements OnInit, DoCheck {
     console.log('Do check is called');
   }
 
+  ngAfterViewInit(): void {
+    console.log(this.header);
+    this.header.title = 'This is employee Component';
+    console.log(this.headerList);
+  }
+
   addEmployee() {
-    const emp  = {
+    const emp = {
       id: 4,
       name: 'Anil',
       age: 26,
@@ -90,8 +99,10 @@ export class EmployeeComponent implements OnInit, DoCheck {
       salary: 450000
     };
 
-    this.data = [...this.data, emp ];
+    this.data = [...this.data, emp];
     this.isWeb = false;
+
+    //  [a, b, ...rest] = this.data;
 
   }
 
