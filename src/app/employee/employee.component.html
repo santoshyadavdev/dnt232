@@ -35,7 +35,9 @@
 ></dnt-employee-list>
 
 <button (click)="getData()">Get Data</button>
-<button (click)="getNewData()">Get Data</button>
+<button (click)="addEmp()">Add Employee</button>
+
+<!-- <button (click)="getNewData()">Get Data</button> -->
 
 <ul>
   <li *ngFor="let emp of empList; trackBy: trackByFn">

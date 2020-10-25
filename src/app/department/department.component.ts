@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../employee/services/employee.service';
 
 @Component({
   selector: 'dnt-department',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private empService: EmployeeService) { }
 
   ngOnInit(): void {
+  }
+
+  addEmp() {
+    const emp = {
+      id: 4,
+      name: 'Anil',
+      age: 26,
+      dob: new Date('10-Feb-2000'),
+      email: 'test3@gmail.com',
+      salary: 450000
+    };
+    this.empService.addEmployee(emp);
+    console.log(this.empService.empList);
   }
 
 }
