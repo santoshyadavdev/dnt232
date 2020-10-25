@@ -85,6 +85,9 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
 
   ngAfterViewInit(): void {
     console.log(this.header);
+    // setTimeout(() => {
+    //   this.header.title = 'This is employee Component';
+    // }, 0);
     this.header.title = 'This is employee Component';
     console.log(this.headerList);
   }
