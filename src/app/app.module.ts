@@ -8,6 +8,7 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DepartmentComponent } from './department/department.component';
 import { HeaderComponent } from './header/header.component';
+import { ContainerComponent } from './container/container.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HeaderComponent } from './header/header.component';
     EmployeeComponent,
     EmployeeListComponent,
     DepartmentComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
