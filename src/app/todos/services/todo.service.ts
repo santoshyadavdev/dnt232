@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Todo } from './todo';
 
 @Injectable({
@@ -14,8 +15,8 @@ export class TodoService {
   //   return fetch('https://jsonplaceholder.typicode.com/albums');
   // }
 
-  getTodos() {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos/', {
       headers: this.jwtHeader,
       params: {
         'userId': '1'
@@ -23,7 +24,7 @@ export class TodoService {
     });
   }
 
-  addTodos(todo: Todo) {
+  addTodos(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo, {
       headers: this.jwtHeader
     });
