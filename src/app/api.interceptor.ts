@@ -17,7 +17,6 @@ export class ApiInterceptor implements HttpInterceptor {
     console.log(request);
     if (request.method === 'GET') {
       const req = request.clone({ headers: new HttpHeaders().set('jwttoken', 'fghfdjkghkkjf4564654') });
-
       return next.handle(req);
     }
     return next.handle(request);
