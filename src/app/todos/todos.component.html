@@ -1,0 +1,15 @@
+<dnt-photos></dnt-photos>
+<hr>
+
+<button class="btn btn-primary" (click)="addTodo()">Add Todo</button>
+<hr>
+
+<button class="btn btn-primary" (click)="updateTask()">Update Todo</button>
+<hr>
+
+
+<button class="btn btn-primary" (click)="deleteTask()">Delete Todo</button>
+<hr>
+
+
+<dnt-todo-list [todos]="todoList"></dnt-todo-list>
