@@ -17,7 +17,7 @@ export class TodoService {
 
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos/', {
-      headers: this.jwtHeader,
+      //headers: this.jwtHeader,
       params: {
         'userId': '1'
       }
@@ -25,9 +25,11 @@ export class TodoService {
   }
 
   addTodos(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo, {
-      headers: this.jwtHeader
-    });
+    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo,
+    // {
+    //   headers: this.jwtHeader
+    // }
+    );
   }
 
   updateTodo(todo: Todo) {
