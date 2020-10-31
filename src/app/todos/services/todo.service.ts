@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Todo } from './todo';
 
@@ -7,19 +7,31 @@ import { Todo } from './todo';
 })
 export class TodoService {
 
+  jwtHeader = new HttpHeaders().set('jwttoken', 'fghfdjkghkkjf4564654');
   constructor(private http: HttpClient) { }
 
+  // fetchTodo() {
+  //   return fetch('https://jsonplaceholder.typicode.com/albums');
+  // }
+
   getTodos() {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
+      headers: this.jwtHeader,
+      params: {
+        'userId': '1'
+      }
+    });
   }
 
   addTodos(todo: Todo) {
-    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo);
+    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo, {
+      headers: this.jwtHeader
+    });
   }
 
   updateTodo(todo: Todo) {
     return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${todo.id}`,
-      todo);
+      todo, { headers: this.jwtHeader });
   }
 
   deleteTodo(todo: Todo) {
