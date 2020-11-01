@@ -14,8 +14,10 @@ import { TodosComponent } from './todos/todos.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { PhotosComponent } from './todos/photos/photos.component';
 import { ApiInterceptor } from './api.interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodosAddComponent } from './todos/todos-add/todos-add.component';
+import { EmployeeOnboardingComponent } from './employee/employee-onboarding/employee-onboarding.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -28,14 +30,17 @@ import { TodosAddComponent } from './todos/todos-add/todos-add.component';
     TodosComponent,
     TodoListComponent,
     PhotosComponent,
-    TodosAddComponent
+    TodosAddComponent,
+    EmployeeOnboardingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass : ApiInterceptor, multi: true }
