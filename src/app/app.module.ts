@@ -14,6 +14,8 @@ import { TodosComponent } from './todos/todos.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { PhotosComponent } from './todos/photos/photos.component';
 import { ApiInterceptor } from './api.interceptor';
+import { FormsModule } from '@angular/forms';
+import { TodosAddComponent } from './todos/todos-add/todos-add.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,15 @@ import { ApiInterceptor } from './api.interceptor';
     ContainerComponent,
     TodosComponent,
     TodoListComponent,
-    PhotosComponent
+    PhotosComponent,
+    TodosAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass : ApiInterceptor, multi: true }
