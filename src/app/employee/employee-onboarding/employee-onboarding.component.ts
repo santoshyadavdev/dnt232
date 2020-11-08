@@ -5,6 +5,7 @@ import {
 } from '@angular/forms';
 import { exhaustMap, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { EmployeeService } from '../services/employee.service';
+import { CustomValidator } from './customvalidator/custom.validator';
 
 @Component({
   selector: 'dnt-employee-onboarding',
@@ -37,13 +38,18 @@ export class EmployeeOnboardingComponent implements OnInit {
           validators: [
             Validators.required,
             Validators.minLength(2),
-            Validators.maxLength(20)
+            Validators.maxLength(20),
+            CustomValidator.nameValidator
           ]
         }),
       dob: ['', Validators.required],
+      password: [''],
+      confirmPassword: [''],
+      tnc: ['', Validators.requiredTrue],
       email: new FormControl('', [Validators.required, Validators.email]),
       address: this.fb.group({
-        addr1: new FormControl('', Validators.required),
+        addr1: new FormControl('',
+          [Validators.required, CustomValidator.specialChar(['!', ',', '.'])]),
         addr2: new FormControl(''),
         city: new FormControl(''),
         pin: new FormControl(''),
@@ -53,7 +59,7 @@ export class EmployeeOnboardingComponent implements OnInit {
           this.buildForm()
         ]
       )
-    }, { updateOn: 'change' });
+    }, { updateOn: 'change', validators: [CustomValidator.passwordValidaor] });
 
     // this.onboardingForm.valueChanges.subscribe((val)=> console.log(val));
 

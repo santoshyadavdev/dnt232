@@ -1,4 +1,5 @@
 {{onboardingForm.value | json}}
+{{onboardingForm.errors | json}}
 <h1>
   Employee Onboarding
 </h1>
@@ -16,9 +17,21 @@
     <div *ngIf="onboardingForm.get('name').hasError('maxlength')">
       Name should be max 20 chars!
     </div>
+    <div *ngIf="onboardingForm.get('name').hasError('invalidname')">
+      Your name contains test keyword!
+    </div>
   </div>
   <div class="form-group">
     <input type="text" placeholder="Datepicker" formControlName="dob" class="form-control" bsDatepicker>
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Enter Password" formControlName="password" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Confirm Password" formControlName="confirmPassword" class="form-control">
+  </div>
+  <div *ngIf="onboardingForm.get('confirmPassword').hasError('invalidPassword')">
+    Password and Confirm Password do not match!
   </div>
   <div class="form-group">
     <input class="form-control" type="email" formControlName="email" placeholder="Enter Email">
@@ -26,6 +39,9 @@
   <div formGroupName="address">
     <div class="form-group">
       <input class="form-control" type="text" formControlName="addr1" placeholder="Enter the Address Line 1">
+      <div *ngIf="onboardingForm.get('address.addr1').hasError('invalidChar')">
+        Please enter the valid input!
+      </div>
     </div>
     <div class="form-group">
       <input class="form-control" type="text" formControlName="addr2" placeholder="Enter the Address Line 2">
@@ -51,6 +67,9 @@
       <div [formGroupName]="i">
         <div class="form-group">
           <input class="form-control" type="text" formControlName="employer" placeholder="Enter the employer name">
+          <div *ngIf="onboardingForm.get(['pastExp',i,'employer']).hasError('required')">
+            Please provide the employer name!
+          </div>
         </div>
         <div class="form-group">
           <input type="text" placeholder="From Date" formControlName="fromDate" class="form-control" bsDatepicker>
@@ -71,6 +90,10 @@
       <button class="btn btn-success" type="button" [disabled]="pastExp.length <= 1" (click)="removeAll()">Clear
         Experience</button>
     </div>
+  </div>
+
+  <div class="form-group">
+    <input type="checkbox" formControlName="tnc">
   </div>
 
   <div class="form-group">
