@@ -18,6 +18,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodosAddComponent } from './todos/todos-add/todos-add.component';
 import { EmployeeOnboardingComponent } from './employee/employee-onboarding/employee-onboarding.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +39,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     TodoListComponent,
     PhotosComponent,
     TodosAddComponent,
-    EmployeeOnboardingComponent
+    EmployeeOnboardingComponent,
+    MainNavComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +51,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     FormsModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass : ApiInterceptor, multi: true }
