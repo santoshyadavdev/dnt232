@@ -103,4 +103,14 @@ export class EmployeeOnboardingComponent implements OnInit {
   addEmployee() {
     console.log(this.onboardingForm.getRawValue());
   }
+
+  addPassport() {
+    this.onboardingForm.addControl('passport', new FormGroup({
+      passportNo: new FormControl(''),
+      fromDate: new FormControl(''),
+      toDate: new FormControl('')
+    }));
+
+    // this.onboardingForm.removeControl('passport');
+  }
 }

@@ -4,7 +4,10 @@
   Employee Onboarding
 </h1>
 
+<button class="btn btn-primary" (click)="addPassport()">Add Passport</button>
+
 <form [formGroup]="onboardingForm" (ngSubmit)="addEmployee()">
+
   <div class="form-group">
     <input class="form-control" type="text" formControlName="name" placeholder="Enter the Name">
     {{onboardingForm.get('name').errors | json}}
@@ -91,6 +94,22 @@
         Experience</button>
     </div>
   </div>
+
+
+  <div *ngIf="onboardingForm.get('passport')">
+      <div formGroupName="passport">
+        <div class="form-group">
+          <input type="text" formControlName="passportNo">
+        </div>
+        <div class="form-group">
+          <input type="date" formControlName="fromDate">
+        </div>
+        <div class="form-group">
+          <input type="date" formControlName="toDate">
+        </div>
+      </div>
+  </div>
+
 
   <div class="form-group">
     <input type="checkbox" formControlName="tnc">
