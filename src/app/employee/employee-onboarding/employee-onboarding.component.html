@@ -44,7 +44,7 @@
   </div>
 
   <div class="form-group">
-    <button class="btn btn-success" (click)="addExp()">Add Experience</button>
+    <button class="btn btn-success" type="button" (click)="addExp()">Add Experience</button>
   </div>
   <div formArrayName="pastExp">
     <div *ngFor="let exp of pastExp.controls; let i=index">
@@ -63,12 +63,13 @@
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-danger" [disabled]="i<1" (click)="removeExp(i)">Remove Experience</button>
+        <button class="btn btn-danger" type="button" [disabled]="i<1" (click)="removeExp(i)">Remove Experience</button>
       </div>
     </div>
 
     <div class="form-group">
-      <button class="btn btn-success" [disabled]="pastExp.length <= 1" (click)="removeAll()">Clear Experience</button>
+      <button class="btn btn-success" type="button" [disabled]="pastExp.length <= 1" (click)="removeAll()">Clear
+        Experience</button>
     </div>
   </div>
 

@@ -3,6 +3,8 @@ import {
   FormGroup, FormBuilder,
   FormControl, FormArray, Validators
 } from '@angular/forms';
+import { exhaustMap, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'dnt-employee-onboarding',
@@ -23,18 +25,21 @@ export class EmployeeOnboardingComponent implements OnInit {
     'banglore'
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private empService: EmployeeService) { }
 
   ngOnInit(): void {
     this.onboardingForm = this.fb.group({
       // name: new FormControl({ value: 'Test', disabled: true }),
       name: new FormControl('',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(20)
-        ]
-      ),
+        {
+          updateOn: 'blur',
+          validators: [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(20)
+          ]
+        }),
       dob: ['', Validators.required],
       email: new FormControl('', [Validators.required, Validators.email]),
       address: this.fb.group({
@@ -48,7 +53,23 @@ export class EmployeeOnboardingComponent implements OnInit {
           this.buildForm()
         ]
       )
-    })
+    }, { updateOn: 'change' });
+
+    // this.onboardingForm.valueChanges.subscribe((val)=> console.log(val));
+
+    // this.onboardingForm.valueChanges.pipe(
+    //   tap((val) => console.log(val)),
+    //   filter(()=> this.onboardingForm.valid),
+    //   tap((val) => console.log(val))
+    // ).subscribe();
+
+    this.onboardingForm.valueChanges.pipe(
+      filter(() => this.onboardingForm.valid),
+      exhaustMap((val) => this.empService.postEmployee(val))
+      // mergeMap((val) => this.empService.postEmployee(val))
+      // switchMap((val) => this.empService.postEmployee(val))
+      // exhaustMap((val) => this.empService.postEmployee(val))
+    ).subscribe()
   }
 
   addExp() {

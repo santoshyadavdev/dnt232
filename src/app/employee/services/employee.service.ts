@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../employee';
 
@@ -32,9 +33,9 @@ export class EmployeeService {
     }
   ];
 
-  constructor() {
+  constructor(private http:HttpClient) {
     console.log('New Employee Servive is created');
-   }
+  }
 
   getEmployeeData() {
     return this.empList;
@@ -42,5 +43,9 @@ export class EmployeeService {
 
   addEmployee(emp: Employee) {
     this.empList.push(emp);
+  }
+
+  postEmployee(emp: any) {
+    return this.http.post('https://jsonplaceholder.typicode.com/todos',emp);
   }
 }

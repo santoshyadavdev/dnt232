@@ -9,7 +9,8 @@
 {{todoForm.value | json}}
 <form #todoForm="ngForm" (ngSubmit)="addTodo(todoForm)">
   <div class="form-group">
-    <input class="form-control" disabled type="number" [(ngModel)]="todo.id" name="id">
+    <input class="form-control" disabled type="number" [(ngModel)]="todo.id"
+      name=" id">
   </div>
 
   <div class="form-group">
