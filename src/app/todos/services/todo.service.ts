@@ -26,9 +26,9 @@ export class TodoService {
 
   addTodos(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo,
-    // {
-    //   headers: this.jwtHeader
-    // }
+      // {
+      //   headers: this.jwtHeader
+      // }
     );
   }
 
@@ -52,6 +52,10 @@ export class TodoService {
     //   reportProgress: true
     // });
     return this.http.request(request);
+  }
+
+  getTodoDetails(id: number) {
+    return this.http.get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`,);
   }
 
 }

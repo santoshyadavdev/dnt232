@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Employee } from './employee/employee';
 
 @Component({
@@ -6,7 +7,7 @@ import { Employee } from './employee/employee';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'dnt232';
 
   role = 'Admin';
@@ -39,4 +40,28 @@ export class AppComponent {
       salary: 450000
     }
   ];
+
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationStart) {
+        console.log('Rouet Navigation started')
+      }
+      if (evt instanceof NavigationEnd) {
+        console.log('Rouet Navigation Ended')
+      }
+    }
+
+    );
+  }
 }
+
+
+// canActivate
+// canAcivateChild -- Children
+// canDeactivate --
+// canLoad -- LazyLoading
+// Resolve --

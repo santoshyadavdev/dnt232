@@ -26,6 +26,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { TodosDetailsComponent } from './todos/todos-details/todos-details.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     TodosAddComponent,
     EmployeeOnboardingComponent,
     MainNavComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    TodosDetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
