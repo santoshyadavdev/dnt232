@@ -10,10 +10,18 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard] },
-  { path: 'todo', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) },
+  {
+    path: 'todo',
+    loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule),
+    canLoad: [AuthGuard]
+  },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
+  {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
+    canLoad: [AuthGuard]
+  },
   { path: '**', component: PagenotfoundComponent },
 ];
 

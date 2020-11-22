@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   CanActivate, ActivatedRouteSnapshot,
-  RouterStateSnapshot, UrlTree, Router, CanActivateChild
+  RouterStateSnapshot, UrlTree, Router, CanActivateChild, CanLoad, Route, UrlSegment
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from '../login/services/login.service';
@@ -9,7 +9,7 @@ import { LoginService } from '../login/services/login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   constructor(private loginService: LoginService,
     private router: Router) {
@@ -26,6 +26,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.loginService.isAdmin;
+  }
+
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.loginService.isLoggedIn) return true;
   }
 
 }
