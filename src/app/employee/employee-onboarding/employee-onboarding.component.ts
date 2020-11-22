@@ -61,6 +61,8 @@ export class EmployeeOnboardingComponent implements OnInit {
       )
     }, { updateOn: 'change', validators: [CustomValidator.passwordValidaor] });
 
+    this.getEmployeeData();
+
     // this.onboardingForm.valueChanges.subscribe((val)=> console.log(val));
 
     // this.onboardingForm.valueChanges.pipe(
@@ -76,6 +78,10 @@ export class EmployeeOnboardingComponent implements OnInit {
       // switchMap((val) => this.empService.postEmployee(val))
       // exhaustMap((val) => this.empService.postEmployee(val))
     ).subscribe()
+  }
+
+  getEmployeeData() {
+    this.onboardingForm.patchValue(this.empService.getEmployee());
   }
 
   addExp() {
@@ -102,6 +108,29 @@ export class EmployeeOnboardingComponent implements OnInit {
 
   addEmployee() {
     console.log(this.onboardingForm.getRawValue());
+    this.resetForm();
+  }
+
+  private resetForm() {
+    this.onboardingForm.reset({
+      name: '',
+      dob: '',
+      password: '',
+      confirmPassword: '',
+      tnc: '',
+      email: '',
+      address: {
+        addr1: '',
+        addr2: '',
+        city: '',
+        pin: '',
+      },
+      pastExp: []
+    });
+  }
+
+  reset() {
+    this.resetForm();
   }
 
   addPassport() {
@@ -110,7 +139,5 @@ export class EmployeeOnboardingComponent implements OnInit {
       fromDate: new FormControl(''),
       toDate: new FormControl('')
     }));
-
-    // this.onboardingForm.removeControl('passport');
   }
 }

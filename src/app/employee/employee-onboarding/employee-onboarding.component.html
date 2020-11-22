@@ -1,5 +1,7 @@
 {{onboardingForm.value | json}}
 {{onboardingForm.errors | json}}
+
+{{onboardingForm.pristine | json}}
 <h1>
   Employee Onboarding
 </h1>
@@ -117,5 +119,6 @@
 
   <div class="form-group">
     <button [disabled]="onboardingForm.invalid" type="submit" class="btn btn-primary">Add Employee</button>
+    <button [disabled]="onboardingForm.pristine" type="button" class="btn btn-primary" (click)="reset()">Reset Form</button>
   </div>
 </form>

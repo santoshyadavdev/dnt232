@@ -33,7 +33,7 @@ export class EmployeeService {
     }
   ];
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     console.log('New Employee Servive is created');
   }
 
@@ -46,6 +46,27 @@ export class EmployeeService {
   }
 
   postEmployee(emp: any) {
-    return this.http.post('https://jsonplaceholder.typicode.com/todos',emp);
+    return this.http.post('https://jsonplaceholder.typicode.com/todos', emp);
+  }
+
+  getEmployee() {
+    return {
+      name: 'Test',
+      dob: '13-Jan-2000',
+      password: '123',
+      confirmPassword: '',
+      tnc: true,
+      email: 'dsas@df.com',
+      address: {
+        addr1: 'dfsdf',
+        addr2: 'dsgfd',
+        city: 'fdg',
+        pin: '1321',
+      },
+      pastExp: [{
+        employer: 'ds',
+        designation: 'test',
+      }]
+    }
   }
 }
