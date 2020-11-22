@@ -23,22 +23,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
+import { EmployeeModule } from './employee/employee.module';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
-    EmployeeListComponent,
     DepartmentComponent,
-    HeaderComponent,
     ContainerComponent,
-    EmployeeOnboardingComponent,
     MainNavComponent,
     PagenotfoundComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
+    EmployeeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -51,6 +50,7 @@ import { LoginComponent } from './login/login.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    HeaderModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass : ApiInterceptor, multi: true }
