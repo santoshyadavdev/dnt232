@@ -7,11 +7,14 @@ import { EmployeeGuard } from './employee/guards/employee.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AboutComponent } from './todos/guard/about/about.component';
 
 const routes: Routes = [
-  { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard] , data: {
+  {
+    path: 'department', component: DepartmentComponent, canActivate: [AuthGuard], data: {
       title: 'Department View'
-  } },
+    }
+  },
   {
     path: 'todo',
     loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule),
@@ -23,6 +26,11 @@ const routes: Routes = [
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
     canLoad: [AuthGuard]
+  },
+  {
+    path: 'aboutus/:id',
+    component : AboutComponent,
+    outlet: 'about'
   },
   { path: '**', component: PagenotfoundComponent },
 ];

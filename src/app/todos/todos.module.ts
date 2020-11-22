@@ -8,6 +8,7 @@ import { TodosAddComponent } from './todos-add/todos-add.component';
 import { TodosDetailsComponent } from './todos-details/todos-details.component';
 import { TodosComponent } from './todos.component';
 import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './guard/about/about.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     PhotosComponent,
     TodosAddComponent,
     TodosDetailsComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,

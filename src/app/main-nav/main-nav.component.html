@@ -7,6 +7,8 @@
       <a mat-list-item routerLink="/department">Department</a>
       <a mat-list-item routerLink="/todo">Todos</a>
       <a mat-list-item routerLink="/employee/onboarding">Employee Onboarding</a>
+      <a mat-list-item [routerLink]="[{ outlets: { about: ['aboutus', 1] } }]">Aboutus</a>
+      <a mat-list-item [routerLink]="[{ outlets: { about: null } }]">Clear About Us</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -19,5 +21,6 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
+    <router-outlet name="about"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
