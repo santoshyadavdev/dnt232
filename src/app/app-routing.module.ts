@@ -7,20 +7,19 @@ import { EmployeeGuard } from './employee/guards/employee.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { TodosDetailsComponent } from './todos/todos-details/todos-details.component';
-import { TodosComponent } from './todos/todos.component';
 
 const routes: Routes = [
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'employee/onboarding', component: EmployeeOnboardingComponent, canDeactivate: [EmployeeGuard] },
   { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard] },
-  {
-    path: 'todo', component: TodosComponent, canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
-    children: [
-      { path: ':id', component: TodosDetailsComponent },
-    ]
-  },
+  { path: 'todo', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) },
+  // {
+  //   path: 'todo', component: TodosComponent, canActivate: [AuthGuard],
+  //   canActivateChild: [AuthGuard],
+  //   children: [
+  //     { path: ':id', component: TodosDetailsComponent },
+  //   ]
+  // },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent },
