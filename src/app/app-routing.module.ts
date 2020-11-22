@@ -9,7 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
-  { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard] },
+  { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard] , data: {
+      title: 'Department View'
+  } },
   {
     path: 'todo',
     loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule),

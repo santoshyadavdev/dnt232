@@ -1,4 +1,6 @@
 import { Component, OnInit, Optional, SkipSelf } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { EmployeeService } from '../employee/services/employee.service';
 import { LoggerService } from '../logger.service';
 
@@ -9,10 +11,16 @@ import { LoggerService } from '../logger.service';
 })
 export class DepartmentComponent implements OnInit {
 
+
+  title$ = this.route.data.pipe(
+    map(data => data.title)
+  )
   constructor(@SkipSelf() private empService: EmployeeService,
+    private route: ActivatedRoute,
     @Optional() private loggerService: LoggerService) { }
 
   ngOnInit(): void {
+
     if (this.loggerService) {
       this.loggerService.log();
     }
