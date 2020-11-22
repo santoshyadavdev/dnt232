@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Todo } from './services/todo';
 import { TodoService } from './services/todo.service';
 
@@ -11,18 +12,19 @@ export class TodosComponent implements OnInit {
 
   todoList: Todo[];
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.route.data.subscribe((data) => this.todoList = data.todos);
     // this.todoService.fetchTodo().then(res=> console.log(res));
-    this.todoService.getTodos().subscribe((res) => this.todoList = res);
+    // this.todoService.getTodos().subscribe((res) => this.todoList = res);
   }
 
   updateTask() {
     const todo: Todo = {
       userId: 1,
-      id:1,
+      id: 1,
       completed: true,
       title: 'Test Task'
     };
@@ -32,7 +34,7 @@ export class TodosComponent implements OnInit {
   deleteTask() {
     const todo: Todo = {
       userId: 1,
-      id:1,
+      id: 1,
       completed: true,
       title: 'Test Task'
     };
