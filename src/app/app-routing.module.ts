@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'todo', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
   { path: '**', component: PagenotfoundComponent },
 ];
 
