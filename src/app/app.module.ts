@@ -25,6 +25,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { EmployeeModule } from './employee/employee.module';
 import { HeaderModule } from './header/header.module';
+import { HoverDirective } from './directives/hover.directive';
+import { UsernamevalidatorDirective } from './directives/usernamevalidator.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { HeaderModule } from './header/header.module';
     ContainerComponent,
     MainNavComponent,
     PagenotfoundComponent,
-    LoginComponent
+    LoginComponent,
+    HoverDirective,
+    UsernamevalidatorDirective
   ],
   imports: [
     BrowserModule,

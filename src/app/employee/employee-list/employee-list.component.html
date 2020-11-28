@@ -18,17 +18,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr [ngClass]="e ? 'even' : 'odd' "
-      *ngFor="let emp of empList;let i=index;let e=even; let o=odd">
+    <tr [ngClass]="e ? 'even' : 'odd' " *ngFor="let emp of empList | slice : 0: 3; let i=index;let e=even; let o=odd">
       <td>{{i + 1}}</td>
       <td>{{e}}</td>
       <td>{{o}}</td>
       <td>{{emp.id}}</td>
-      <td [innerText]="emp.name"></td>
-      <td>{{emp.email}}</td>
-      <td>{{emp.dob}}</td>
+      <td [innerText]="emp.name | lowercase"></td>
+      <td>{{emp.email | titlecase}}</td>
+      <td>{{emp.dob | date: 'shortDate'}}</td>
       <td>{{emp.age}}</td>
-      <td>{{emp.salary}}</td>
+      <td>{{emp.salary | currency : 'GBP'}}</td>
       <td>
         <button class="btn btn-primary" (click)="sendToParent(emp)">Select</button>
       </td>

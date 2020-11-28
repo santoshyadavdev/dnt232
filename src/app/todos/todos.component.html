@@ -12,4 +12,10 @@
 
 <router-outlet></router-outlet>
 
-<dnt-todo-list [todos]="todoList"></dnt-todo-list>
+{{todo$ | async | json }}
+
+{{error$  | async | json}}
+
+<ng-container *ngIf="todo$ | async as todo">
+  <dnt-todo-list [todos]="todo"></dnt-todo-list>
+</ng-container>

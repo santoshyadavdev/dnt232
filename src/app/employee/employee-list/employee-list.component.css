@@ -1,3 +1,6 @@
+/* .dnt-employee-list {
+
+} */
 
 .even {
   background-color: tomato;
@@ -6,5 +9,5 @@
 
 .odd {
   background-color: slategray;
-  color:  white;
+  color: white;
 }

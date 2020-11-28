@@ -6,7 +6,7 @@ import { EmployeeComponent } from './employee.component';
 import { EmployeeGuard } from './guards/employee.guard';
 
 const routes: Routes = [
-  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'employee', component: EmployeeComponent },
   { path: 'employee/onboarding', component: EmployeeOnboardingComponent, canDeactivate: [EmployeeGuard] },
 ];
 

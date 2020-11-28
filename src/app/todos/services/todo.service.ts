@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Todo } from './todo';
+import { Observable, of } from 'rxjs';
+import { catchError, map, shareReplay } from 'rxjs/operators';
+import { Todo, TodoResponse } from './todo';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +17,41 @@ export class TodoService {
   // }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos/', {
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todo/', {
       //headers: this.jwtHeader,
       params: {
         'userId': '1'
       }
-    });
+    }).pipe(
+      shareReplay(1)
+    );
   }
 
-  addTodos(todo: Todo): Observable<Todo> {
+  addTodos(todo: Todo) {
     return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo,
       // {
       //   headers: this.jwtHeader
       // }
+    ).pipe(
+      map((res) => this.handleResponse(res)),
+      catchError(err => this.handleError(err))
     );
+  }
+
+  handleResponse(res: Todo) {
+    let response: TodoResponse = {
+      data: res,
+      errror: ''
+    }
+    return response;
+  }
+
+  handleError(err: HttpErrorResponse) {
+    let response: TodoResponse = {
+      data: null,
+      errror: err.message
+    };
+    return of(response);
   }
 
   updateTodo(todo: Todo) {

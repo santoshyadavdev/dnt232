@@ -1,9 +1,15 @@
 <form (ngSubmit)="login()">
   <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="user.userName" name="userName" placeholder="Please enter username">
+    <input dntHover="steelblue" #userName="ngModel" dntUsernamevalidator type="text" class="form-control" [(ngModel)]="user.userName" name="userName"
+      placeholder="Please enter username">
+      {{userName.errors | json}}
+      <div *ngIf="userName?.errors?.invalidName">
+        The username is invalid;
+      </div>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Please enter password">
+    <input dntHover="green" type="password" class="form-control" [(ngModel)]="user.password" name="password"
+      placeholder="Please enter password">
   </div>
   <div class="form-group">
     <button class="btn btn-primary" type="submit">Login</button>

@@ -9,9 +9,9 @@ const routes: Routes = [
   {
     path: '', component: TodosComponent, canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
-    resolve: {
-      todos: TodoresolveGuard
-    },
+    // resolve: {
+    //   todos: TodoresolveGuard
+    // },
     children: [
       { path: ':id', component: TodosDetailsComponent },
     ]

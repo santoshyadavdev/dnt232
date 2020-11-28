@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, of, Subscription } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Todo } from './services/todo';
 import { TodoService } from './services/todo.service';
 
@@ -8,17 +10,28 @@ import { TodoService } from './services/todo.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
 
   todoList: Todo[];
+  error$: any;
+
+  // todo$: Observable<Todo[]>;
+
+  todo$ = this.todoService.getTodos().pipe(
+    catchError((err) => this.error$= of(err.message))
+  )
+
+  todoSubscription: Subscription;
 
   constructor(private todoService: TodoService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => this.todoList = data.todos);
+    // this.route.data.subscribe((data) => this.todoList = data.todos);
     // this.todoService.fetchTodo().then(res=> console.log(res));
-    // this.todoService.getTodos().subscribe((res) => this.todoList = res);
+    // this.todoSubscription = this.todoService.getTodos().subscribe((res) => this.todoList = res);
+    // this.todo$ = this.todoService.getTodos();
+
   }
 
   updateTask() {
@@ -39,6 +52,9 @@ export class TodosComponent implements OnInit {
       title: 'Test Task'
     };
     this.todoService.deleteTodo(todo).subscribe(res => console.log(res));
+  }
+
+  ngOnDestroy() {
   }
 
 }
