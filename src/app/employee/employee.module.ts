@@ -8,13 +8,17 @@ import { EmployeeComponent } from './employee.component';
 import { ProductModule } from '../product/product.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from '../header/header.module';
+import { WelcomePipe } from './pipes/welcome.pipe';
+import { SalaryPipe } from './pipes/salary.pipe';
 
 
 @NgModule({
   declarations: [
     EmployeeComponent,
     EmployeeListComponent,
-    EmployeeOnboardingComponent
+    EmployeeOnboardingComponent,
+    WelcomePipe,
+    SalaryPipe
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Employee } from '../employee';
 
 @Component({
@@ -20,9 +21,12 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     console.log(changes);
   }
 
-  constructor() { }
+  salary : FormControl;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.salary = this.fb.control('');
   }
 
   sendToParent(emp: Employee) {

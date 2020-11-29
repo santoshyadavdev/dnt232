@@ -1,6 +1,8 @@
 <h1>
   Employee List
 </h1>
+{{salary.value}}
+<input type="number" [formControl]="salary" placeholder="Enter Salary">
 
 <table class="table" *ngIf="isWeb; else empMobileTable">
   <thead>
@@ -18,12 +20,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr [ngClass]="e ? 'even' : 'odd' " *ngFor="let emp of empList | slice : 0: 3; let i=index;let e=even; let o=odd">
+    <tr [ngClass]="e ? 'even' : 'odd' "
+      *ngFor="let emp of empList | salaryFilter : salary.value  ; let i=index;let e=even; let o=odd">
       <td>{{i + 1}}</td>
       <td>{{e}}</td>
       <td>{{o}}</td>
       <td>{{emp.id}}</td>
-      <td [innerText]="emp.name | lowercase"></td>
+      <td [innerText]="emp.name | lowercase | welcome : 'Mr.'"></td>
       <td>{{emp.email | titlecase}}</td>
       <td>{{emp.dob | date: 'shortDate'}}</td>
       <td>{{emp.age}}</td>
