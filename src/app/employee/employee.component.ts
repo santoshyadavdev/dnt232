@@ -5,6 +5,7 @@ import {
 import { Employee } from './employee';
 import { HeaderComponent } from '../header/header.component';
 import { EmployeeService } from './services/employee.service';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'dnt-employee',
@@ -12,7 +13,7 @@ import { EmployeeService } from './services/employee.service';
   // template: `<h1>This is employee
   //  Component</h1>`,
   styleUrls: ['./employee.component.css'],
-  providers: [EmployeeService]
+  providers: [EmployeeService, UpperCasePipe]
   // styles: ['h1 { color: red }']
 })
 export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
@@ -75,11 +76,13 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
 
   // empService = new EmployeeService();
 
-  constructor(@Self() private empService: EmployeeService) {
+  constructor(@Self() private empService: EmployeeService,
+    private upperCasePipe: UpperCasePipe) {
     this.isWeb = true;
   }
 
   ngOnInit(): void {
+    this.employeeName = this.upperCasePipe.transform(this.employeeName);
     console.log(this.errorDiv);
     this.errorDiv.nativeElement.innerHTML = '<h1>This is error div</h1>';
   }

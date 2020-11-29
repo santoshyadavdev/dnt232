@@ -6,7 +6,7 @@ import { Employee } from '../employee';
 })
 export class SalaryPipe implements PipeTransform {
 
-  transform(employees: Employee[], salary: number): Employee[] {
+  transform(employees: Employee[], salary: number, name? : string): Employee[] {
     return employees.filter(emp => emp.salary > salary);
   }
 

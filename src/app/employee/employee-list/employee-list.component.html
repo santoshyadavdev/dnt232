@@ -21,7 +21,7 @@
   </thead>
   <tbody>
     <tr [ngClass]="e ? 'even' : 'odd' "
-      *ngFor="let emp of empList | salaryFilter : salary.value  ; let i=index;let e=even; let o=odd">
+      *ngFor="let emp of empList | salaryFilter : salary.value : 'test' ; let i=index;let e=even; let o=odd">
       <td>{{i + 1}}</td>
       <td>{{e}}</td>
       <td>{{o}}</td>
