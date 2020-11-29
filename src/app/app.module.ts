@@ -27,6 +27,8 @@ import { EmployeeModule } from './employee/employee.module';
 import { HeaderModule } from './header/header.module';
 import { HoverDirective } from './directives/hover.directive';
 import { UsernamevalidatorDirective } from './directives/usernamevalidator.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { UsernamevalidatorDirective } from './directives/usernamevalidator.direc
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HeaderModule
+    HeaderModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass : ApiInterceptor, multi: true }
