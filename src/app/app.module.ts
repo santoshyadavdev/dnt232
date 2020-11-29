@@ -29,6 +29,7 @@ import { HoverDirective } from './directives/hover.directive';
 import { UsernamevalidatorDirective } from './directives/usernamevalidator.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AppService, AppValue } from './app.config.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { environment } from '../environments/environment';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass : ApiInterceptor, multi: true }
+    { provide: AppService, useValue: AppValue },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

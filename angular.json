@@ -62,6 +62,36 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": false,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
@@ -73,6 +103,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dnt232:build:production"
+            },
+            "staging": {
+              "browserTarget": "dnt232:build:staging"
             }
           }
         },
@@ -111,9 +144,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -154,9 +185,7 @@
               "projects/admin/src/favicon.ico",
               "projects/admin/src/assets"
             ],
-            "styles": [
-              "projects/admin/src/styles.scss"
-            ],
+            "styles": ["projects/admin/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -218,9 +247,7 @@
               "projects/admin/src/favicon.ico",
               "projects/admin/src/assets"
             ],
-            "styles": [
-              "projects/admin/src/styles.scss"
-            ],
+            "styles": ["projects/admin/src/styles.scss"],
             "scripts": []
           }
         },
@@ -232,9 +259,7 @@
               "projects/admin/tsconfig.spec.json",
               "projects/admin/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -284,9 +309,7 @@
               "projects/core/tsconfig.lib.json",
               "projects/core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -324,9 +347,7 @@
               "projects/dnt-core/tsconfig.lib.json",
               "projects/dnt-core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

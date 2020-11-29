@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Employee } from './employee/employee';
-
+import { AppService } from './app.config.service';
+import { AppConfig } from './app.config';
 @Component({
   selector: 'dnt-root',
   templateUrl: './app.component.html',
@@ -41,8 +42,9 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router,
+    @Inject(AppService) private appService: AppConfig) {
+      console.log(appService.apiEndPoint);
   }
 
   ngOnInit() {
