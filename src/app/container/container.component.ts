@@ -10,9 +10,9 @@ import { EmployeeService } from '../employee/services/employee.service';
 })
 export class ContainerComponent implements OnInit, AfterContentInit {
 
-  @ContentChild(EmployeeComponent) empComponent : EmployeeComponent;
+  @ContentChild(EmployeeComponent) empComponent: EmployeeComponent;
 
-  @ContentChildren(EmployeeComponent) empChildren : QueryList<EmployeeComponent>;
+  @ContentChildren(EmployeeComponent) empChildren: QueryList<EmployeeComponent>;
 
   constructor(@Host() private empService: EmployeeService) { }
 

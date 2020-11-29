@@ -5,7 +5,7 @@ export class CustomValidator {
   static nameValidator(control: AbstractControl) {
     const name = control.value as string;
     if (name.includes('test')) {
-      return { invalidname: true }
+      return { invalidname: true };
     }
     return null;
   }
@@ -15,11 +15,11 @@ export class CustomValidator {
       const value = control.value as string;
       for (const c of chars) {
         if (value.includes(c)) {
-          return { invalidChar: true }
+          return { invalidChar: true };
         }
       }
       return null;
-    }
+    };
   }
 
   static passwordValidaor(form: AbstractControl) {
@@ -29,7 +29,7 @@ export class CustomValidator {
       confirmPassword.setErrors({
         invalidPassword: true
       });
-      return { invalidPassword: true }
+      return { invalidPassword: true };
     }
     return null;
   }

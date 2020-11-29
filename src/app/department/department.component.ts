@@ -14,10 +14,10 @@ export class DepartmentComponent implements OnInit {
 
   title$ = this.route.data.pipe(
     map(data => data.title)
-  )
+  );
   constructor(@SkipSelf() private empService: EmployeeService,
-    private route: ActivatedRoute,
-    @Optional() private loggerService: LoggerService) { }
+              private route: ActivatedRoute,
+              @Optional() private loggerService: LoggerService) { }
 
   ngOnInit(): void {
 

@@ -48,10 +48,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationStart) {
-        console.log('Rouet Navigation started')
+        console.log('Rouet Navigation started');
       }
       if (evt instanceof NavigationEnd) {
-        console.log('Rouet Navigation Ended')
+        console.log('Rouet Navigation Ended');
       }
     }
 

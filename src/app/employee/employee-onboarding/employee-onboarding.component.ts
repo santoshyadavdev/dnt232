@@ -27,7 +27,7 @@ export class EmployeeOnboardingComponent implements OnInit {
   ];
 
   constructor(private fb: FormBuilder,
-    private empService: EmployeeService) { }
+              private empService: EmployeeService) { }
 
   ngOnInit(): void {
     this.onboardingForm = this.fb.group({
@@ -77,7 +77,7 @@ export class EmployeeOnboardingComponent implements OnInit {
       // mergeMap((val) => this.empService.postEmployee(val))
       // switchMap((val) => this.empService.postEmployee(val))
       // exhaustMap((val) => this.empService.postEmployee(val))
-    ).subscribe()
+    ).subscribe();
   }
 
   getEmployeeData() {
@@ -85,7 +85,7 @@ export class EmployeeOnboardingComponent implements OnInit {
   }
 
   addExp() {
-    this.pastExp.push(this.buildForm())
+    this.pastExp.push(this.buildForm());
   }
 
   removeExp(i: number) {
@@ -94,7 +94,7 @@ export class EmployeeOnboardingComponent implements OnInit {
 
   removeAll() {
     this.pastExp.clear();
-    this.pastExp.push(this.buildForm())
+    this.pastExp.push(this.buildForm());
   }
 
   private buildForm() {

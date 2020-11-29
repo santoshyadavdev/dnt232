@@ -10,25 +10,25 @@ import { TodoService } from '../services/todo.service';
 })
 export class PhotosComponent implements OnInit {
 
-  total= 0;
+  total = 0;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.todoService.getPhotos().subscribe(res => {
-      switch(res.type) {
+      switch (res.type) {
         case HttpEventType.Sent: {
           console.log('The request is sent to the server');
           break;
         }
         case HttpEventType.ResponseHeader: {
-          if(res.status === 200) {
+          if (res.status === 200) {
             console.log('Your request is being processed');
           }
           break;
         }
         case HttpEventType.DownloadProgress: {
-          this.total +=res.loaded;
+          this.total += res.loaded;
           console.log(this.total);
           break;
         }

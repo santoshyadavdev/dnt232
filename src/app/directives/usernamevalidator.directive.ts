@@ -13,7 +13,7 @@ export class UsernamevalidatorDirective implements Validator {
     if (control && control.value) {
       if (control.value.includes('test')) {
         this.renderer.setStyle(this.el.nativeElement, 'border-color' , 'red');
-        return { invalidName: true }
+        return { invalidName: true };
       }
     }
 

@@ -18,13 +18,13 @@ export class TodosComponent implements OnInit, OnDestroy {
   // todo$: Observable<Todo[]>;
 
   todo$ = this.todoService.getTodos().pipe(
-    catchError((err) => this.error$= of(err.message))
-  )
+    catchError((err) => this.error$ = of(err.message))
+  );
 
   todoSubscription: Subscription;
 
   constructor(private todoService: TodoService,
-    private route: ActivatedRoute) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // this.route.data.subscribe((data) => this.todoList = data.todos);
@@ -60,10 +60,10 @@ export class TodosComponent implements OnInit, OnDestroy {
 }
 
 
-//GET
-//POST
-//PUT
-//PATCH
-//DELETE
-//JSONP
-//OPTIONS
+// GET
+// POST
+// PUT
+// PATCH
+// DELETE
+// JSONP
+// OPTIONS

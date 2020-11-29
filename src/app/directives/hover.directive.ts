@@ -20,17 +20,17 @@ export class HoverDirective implements OnInit {
 
   @HostListener('mouseover') onmouseover() {
     // console.log(this.el.nativeElement);
-    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.hoverColor)
+    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.hoverColor);
   }
 
   @HostListener('mouseout') onmouseout() {
     // console.log(this.el.nativeElement);
-    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.mouseoutColor)
+    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.mouseoutColor);
   }
 
   @HostListener('click') onClick() {
     // console.log(this.el.nativeElement);
-    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'steelblue')
+    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'steelblue');
   }
 
 }

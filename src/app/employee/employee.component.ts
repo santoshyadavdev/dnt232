@@ -19,7 +19,7 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
 
   @ViewChild(HeaderComponent) header: HeaderComponent;
 
-  @ViewChildren(HeaderComponent) headerList : QueryList<HeaderComponent>;
+  @ViewChildren(HeaderComponent) headerList: QueryList<HeaderComponent>;
 
   @ViewChild('errorDiv', { static: true }) errorDiv: ElementRef;
 

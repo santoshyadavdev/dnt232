@@ -39,7 +39,7 @@ export class TodosAddComponent implements OnInit {
           completed: true,
           title: '',
           userId: 1
-        })
+        });
       });
     }
 

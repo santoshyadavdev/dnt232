@@ -18,9 +18,9 @@ export class TodoService {
 
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todo/', {
-      //headers: this.jwtHeader,
+      // headers: this.jwtHeader,
       params: {
-        'userId': '1'
+        userId: '1'
       }
     }).pipe(
       shareReplay(1)
@@ -39,15 +39,15 @@ export class TodoService {
   }
 
   handleResponse(res: Todo) {
-    let response: TodoResponse = {
+    const response: TodoResponse = {
       data: res,
       errror: ''
-    }
+    };
     return response;
   }
 
   handleError(err: HttpErrorResponse) {
-    let response: TodoResponse = {
+    const response: TodoResponse = {
       data: null,
       errror: err.message
     };
@@ -77,7 +77,7 @@ export class TodoService {
   }
 
   getTodoDetails(id: number) {
-    return this.http.get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`,);
+    return this.http.get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, );
   }
 
 }

@@ -67,6 +67,6 @@ export class EmployeeService {
         employer: 'ds',
         designation: 'test',
       }]
-    }
+    };
   }
 }

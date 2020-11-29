@@ -17,7 +17,7 @@ export class TodosDetailsComponent implements OnInit {
   // );
 
   constructor(private route: ActivatedRoute,
-    private todoService: TodoService
+              private todoService: TodoService
   ) { }
 
   ngOnInit(): void {

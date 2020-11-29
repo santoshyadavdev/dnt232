@@ -10,7 +10,7 @@ import { Employee } from '../employee';
 })
 export class EmployeeListComponent implements OnInit, OnChanges {
 
-  @Input() isWeb: boolean = false;
+  @Input() isWeb = false;
 
   @Output() selectedEmployee = new EventEmitter<Employee>();
 
